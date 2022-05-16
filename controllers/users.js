@@ -33,12 +33,12 @@ module.exports.findUserById = (req, res, next) => {
 
 module.exports.getCurrentUser = (req, res, next) => {
   const { _id } = req.user;
-  User.find({ _id })
+  User.findById(_id)
     .then((user) => {
       if (!user) {
         next(new NotFoundError('Пользователь не найден'));
       }
-      return res.send(user);
+      return res.send({ data: user });
     })
     .catch(next);
 };
