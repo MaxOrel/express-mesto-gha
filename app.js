@@ -18,13 +18,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(express.json());
-// app.use((req, res, next) => {
-//   req.user = {
-//     _id: '627557930fdee47a1da0cb74',
-//   };
 
-//   next();
-// });
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
